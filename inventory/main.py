@@ -5,7 +5,7 @@ from redis_om import get_redis_connection, HashModel
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:9000"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -59,5 +59,5 @@ async def delete(pk: str):
 
 
 @app.put("/products/{pk}")
-async def update(pk: str):
-    return Product.update(pk)
+async def update(product: Product):
+    return product.update()

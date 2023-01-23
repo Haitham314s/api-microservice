@@ -50,7 +50,7 @@ async def get(pk: str):
 async def create(request: Request, background_task: BackgroundTasks):
     body = await request.json()
 
-    req = requests.get(f"http://localhost:8080/products/{body['id']}")
+    req = requests.get(f"http://localhost:9000/products/{body['id']}")
     product = req.json()
 
     order = Order(
