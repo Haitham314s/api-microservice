@@ -35,10 +35,10 @@ class Order(HashModel):
     class Meta:
         database = redis
 
+
 @app.get("/orders")
 async def get_all():
     return [await get(pk) for pk in Order.all_pks()]
-
 
 
 @app.get("/orders/{pk}")
@@ -72,3 +72,4 @@ async def order_completed(order: Order):
     time.sleep(5)
     order.status = "completed"
     order.save()
+    redis.xadd("order_completed", order.dict(), "*")
