@@ -20,5 +20,3 @@ E
 inventory/consumer.py,0\b\0b2b820c26c1e4a66e6f5cd3376305c34aacd84d
 ?
 payment/main.py,4\e\4e220330c4582ce7a2ff43d6ccddf6009d1758a2
-O
-inventory-frontend/src/index.js,2\b\2bc8914308e1810ad6334be339105edecf23dc6f
