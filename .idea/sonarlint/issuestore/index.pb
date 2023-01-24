@@ -12,3 +12,13 @@
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 O
 inventory-frontend/src/logo.svg,8\c\8ca26e2ae5b70200949caed9fc3b05c7632dccc4
+A
+inventory/main.py,9\1\915c31b91b941ce5d7b48313a192787e157511a1
+C
+payment/consumer.py,3\b\3b3266d24efc2b62496494d60275353c0223e3a3
+E
+inventory/consumer.py,0\b\0b2b820c26c1e4a66e6f5cd3376305c34aacd84d
+?
+payment/main.py,4\e\4e220330c4582ce7a2ff43d6ccddf6009d1758a2
+O
+inventory-frontend/src/index.js,2\b\2bc8914308e1810ad6334be339105edecf23dc6f
