@@ -36,40 +36,35 @@ class Order(HashModel):
         database = redis
 
 
-@app.get("/orders")
-async def get_all():
-    return [await get(pk) for pk in Order.all_pks()]
-
-
-@app.get("/orders/{pk}")
-async def get(pk: str):
+@app.get('/orders/{pk}')
+def get(pk: str):
     return Order.get(pk)
 
 
-@app.post("/orders")
-async def create(request: Request, background_task: BackgroundTasks):
+@app.post('/orders')
+async def create(request: Request, background_tasks: BackgroundTasks):  # id, quantity
     body = await request.json()
 
     req = requests.get(f"http://localhost:9000/products/{body['id']}")
     product = req.json()
 
     order = Order(
-        product_id=body["id"],
-        price=product["price"],
-        fee=0.2 * product["price"],
-        total=1.2 * product["price"],
-        quantity=body["quantity"],
-        status="pending"
+        product_id=body['id'],
+        price=product['price'],
+        fee=0.2 * product['price'],
+        total=1.2 * product['price'],
+        quantity=body['quantity'],
+        status='pending'
     )
     order.save()
 
-    background_task.add_task(order_completed, order)
+    background_tasks.add_task(order_completed, order)
 
     return order
 
 
-async def order_completed(order: Order):
+def order_completed(order: Order):
     time.sleep(5)
-    order.status = "completed"
+    order.status = 'completed'
     order.save()
-    redis.xadd("order_completed", order.dict(), "*")
+    redis.xadd('order_completed', order.dict(), '*')

@@ -6,7 +6,7 @@ group = 'payment-group'
 
 try:
     redis.xgroup_create(key, group)
-except:
+except Exception:
     print('Group already exists!')
 
 while True:
@@ -20,5 +20,5 @@ while True:
                 order.save()
 
     except Exception as e:
-        print(str(e))
+        print(e)
     time.sleep(1)
