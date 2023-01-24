@@ -9,7 +9,7 @@ export const Orders = () => {
         (async () => {
             try {
                 if (id) {
-                    const response = await fetch(`http://localhost:8000/products/${id}`);
+                    const response = await fetch(`http://localhost:9000/products/${id}`);
                     const content = await response.json();
                     const price = parseFloat(content.price) * 1.2;
                     setMessage(`Your product price is $${price}`);
@@ -24,7 +24,7 @@ export const Orders = () => {
     const submit = async e => {
         e.preventDefault();
 
-        await fetch('http://localhost:8001/orders', {
+        await fetch('http://localhost:9001/orders', {
             method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
                 id, quantity
             })
