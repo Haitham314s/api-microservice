@@ -29,7 +29,7 @@ class Product(HashModel):
 
 @app.get("/products")
 async def all():
-    return [await format(pk) for pk in Product.all_pks()]
+    return [format(pk) for pk in Product.all_pks()]
 
 
 async def format(pk: str):
